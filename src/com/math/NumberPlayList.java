@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class NumberPlayList {
     public static void main(String[] args) {
@@ -45,6 +46,15 @@ public class NumberPlayList {
         myNumberList.forEach (n->{
             System.out.println("Mth5: forEach Llambda imp Value::"+n);
         });
+
+        //uc 1.4 ability to iterate through list of number and print each
+        //elements in double
+        //used function Functional interface for conversion
+        Function<Integer,Double> toDoubleFunction = Integer::doubleValue;
+        myNumberList.forEach(n->{
+            System.out.println("Mth6 forEach Lambda double Value::"+toDoubleFunction.apply(n));
+        });
+
     }
 
 }
