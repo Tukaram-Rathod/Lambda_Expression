@@ -59,6 +59,10 @@ public class NumberPlayList {
         myNumberList.forEach(n->{
             System.out.println("Mth7: forEach value of:"+isEvenFunction.test(n));
         });
+        //Method 8: Processing the Stream
+        myNumberList.stream().forEach(n ->{
+            System.out.println("Mth8: Stream forEach Value:"+n);
+        });
     }
 
 }
