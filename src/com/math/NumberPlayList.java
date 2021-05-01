@@ -77,10 +77,18 @@ public class NumberPlayList {
         //collect function
        List<Double> doubleList = myNumberList.stream()
                                        .filter(isEvenFunction)
+                                       .peek(n -> System.out.println("peak Even Number :"+n ))
                                        .map(toDoubleFunction)
                                        .collect(Collectors.toList());
         System.out.println("Mth9: Printing Doouble List:" +doubleList);
 
+        //Method 10: Listing the first even elements
+        Integer first = myNumberList.stream()
+                        .filter(isEvenFunction)
+                        .peek(n -> System.out.println("peak Even Number :"+n))
+                        .findFirst()
+                        .orElse(null);
+        System.out.println("Mth10: First Even"+first);
     }
 
 }
