@@ -1,9 +1,6 @@
 package com.math;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -82,13 +79,27 @@ public class NumberPlayList {
                                        .collect(Collectors.toList());
         System.out.println("Mth9: Printing Doouble List:" +doubleList);
 
-        //Method 10: Listing the first even elements
-        Integer first = myNumberList.stream()
+       //Method 10: Listing the first even elements
+       Integer first = myNumberList.stream()
                         .filter(isEvenFunction)
                         .peek(n -> System.out.println("peak Even Number :"+n))
                         .findFirst()
                         .orElse(null);
-        System.out.println("Mth10: First Even"+first);
-    }
+       System.out.println("Mth10: First Even: "+first);
 
+       //Method 11:Minimum Even Number
+        Integer min = myNumberList.stream()
+                .filter(isEvenFunction)
+                .min((n1,n2) -> n1-n2)
+                .orElse(null);
+        System.out.println("Mth11: Min Even: "+min);
+
+        //Method 11:Maximum Even Number
+        Integer max = myNumberList.stream()
+                .filter(isEvenFunction)
+                .max(Comparator.comparing(Integer::intValue))
+                .orElse(null);
+        System.out.println("Mth12: max Even: "+max);
+    }
+    
 }
