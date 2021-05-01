@@ -74,6 +74,7 @@ public class NumberPlayList {
             System.out.println("Mth8: Stream forEach Value:"+n);
         });
        //Method 9: Processing the Stream ,Apply Operation on the Stream and then  Strore the Result
+        //collect function
        List<Double> doubleList = myNumberList.stream()
                                        .filter(isEvenFunction)
                                        .map(toDoubleFunction)
