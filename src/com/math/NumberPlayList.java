@@ -1,11 +1,14 @@
 package com.math;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class NumberPlayList {
     public static void main(String[] args) {
@@ -49,20 +52,34 @@ public class NumberPlayList {
         });
 
         //Method 6: forEach Lambda  Function  to print double value
-        Function<Integer,Double> toDoubleFunction = Integer::doubleValue;
-        myNumberList.forEach(n->{
-            System.out.println("Mth6 forEach Lambda double Value::"+toDoubleFunction.apply(n));
-        });
+       Function<Integer,Double>toDoubleFunction = Integer::doubleValue;
+       Predicate<Integer>isEvenFunction = n -> n > 0 && n%2 == 0;
+       List<Double> doublesArrayList = new ArrayList<Double>();
+       List<Double> evenList = new ArrayList<Double>();
+       myNumberList.forEach(n->{
+            doublesArrayList.add(toDoubleFunction.apply(n));
+       });
+       doublesArrayList.forEach(n ->{
+           if (isEvenFunction.test(n.intValue()))
+               evenList.add(n);
+       });
+        System.out.println("Even list:"+evenList);
 
-        //Method  7: Implicit Lambda Function to Check even
-        Predicate<Integer> isEvenFunction = n-> n%2 ==0;
-        myNumberList.forEach(n->{
-            System.out.println("Mth7: forEach value of:"+isEvenFunction.test(n));
+       //Method  7: Implicit Lambda Function to Check even
+       myNumberList.forEach(n->{
+            System.out.println("Mth7: forEach value of:"+n+"Check for Even:"+isEvenFunction.test(n));
         });
-        //Method 8: Processing the Stream
-        myNumberList.stream().forEach(n ->{
+       //Method 8: Processing the Stream
+       myNumberList.stream().forEach(n ->{
             System.out.println("Mth8: Stream forEach Value:"+n);
         });
+       //Method 9: Processing the Stream ,Apply Operation on the Stream and then  Strore the Result
+       List<Double> doubleList = myNumberList.stream()
+                                       .filter(isEvenFunction)
+                                       .map(toDoubleFunction)
+                                       .collect(Collectors.toList());
+        System.out.println("Mth9: Printing Doouble List:" +doubleList);
+
     }
 
 }
