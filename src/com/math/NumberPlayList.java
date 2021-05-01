@@ -94,12 +94,18 @@ public class NumberPlayList {
                 .orElse(null);
         System.out.println("Mth11: Min Even: "+min);
 
-        //Method 11:Maximum Even Number
+        //Method 12:Maximum Even Number
         Integer max = myNumberList.stream()
                 .filter(isEvenFunction)
                 .max(Comparator.comparing(Integer::intValue))
                 .orElse(null);
         System.out.println("Mth12: max Even: "+max);
+
+        //Method 13.Sum ,Count and Average pf numbers
+        Integer sum = myNumberList.stream()
+                .reduce(0,Integer::sum);
+        long count = myNumberList.stream().count();
+        System.out.println("Mth13: Avg of "+sum+ "/"+count+" = "+sum/count);
     }
     
 }
